@@ -39,7 +39,7 @@ d3.json(airportData).then(function(data) {
     // Creating a GeoJSON layer with the retrieved data
     L.geoJSON(data, {
         pointToLayer: function(feature, latlng) {
-            return L.marker(latlng).bindPopup("<h2> Airport code: " + feature.properties.faa + "</h2> <hr> <h3> Airport name: " + feature.properties.name);
+            return L.marker(latlng).bindPopup("<h2> Airport code: " + feature.properties.faa + "</h2> <hr> <h3> Airport name: " + feature.properties.name + "</h3>");
         }
     }).addTo(map);
 });
