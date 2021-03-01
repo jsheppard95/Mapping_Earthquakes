@@ -16,6 +16,7 @@ API calls to USGS GeoJSON sources.
     - Leaflet 1.7.1
     - D3.js 5.16.0
     - Mapbox
+    - Python 3.8.3
     - Visual Studio Code 1.51.1
 
 ## Usage
