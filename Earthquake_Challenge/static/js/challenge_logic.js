@@ -33,11 +33,14 @@ let allEarthquakes = new L.LayerGroup();
 // 1. Add a 2nd layer group for the tectonic plate data.
 let tectonicPlates = new L.LayerGroup();
 
+// Add a 4rd layer for the major earthquake data.
+let majorEQ = new L.LayerGroup();
 
 // 2. Add a reference to the tectonic plates group to the overlays object.
 let overlays = {
   "Tectonic Plates": tectonicPlates,
-  "Earthquakes": allEarthquakes
+  "Earthquakes": allEarthquakes,
+  "Major Earthquakes": majorEQ
 };
 
 // Then we add a control to the map that will allow the user to change which
@@ -142,7 +145,6 @@ legend.onAdd = function() {
   // Finally, we our legend to the map.
   legend.addTo(map);
 
-
   // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
   d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(data) {
     console.log(data);
@@ -152,4 +154,54 @@ legend.onAdd = function() {
     }).addTo(tectonicPlates);
     tectonicPlates.addTo(map);
   });
+});
+
+// Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
+  // 4. Use the same style as the earthquake data.
+  function styleInfo(feature) {
+    return {
+      opacity: 1,
+      fillOpacity: 1,
+      fillColor: getColor(feature.properties.mag),
+      color: "#000000",
+      radius: getRadius(feature.properties.mag),
+      stroke: true,
+      weight: 0.5
+    };
+  }
+  // 5. Only 3 colors for major earthquakes
+  function getColor(magnitude) {
+    if (magnitude > 5) {
+      return "#8e0303";
+    }
+    if (magnitude > 4) {
+      return "#c05700";
+    }
+    return "#c48100";
+  }
+  // 6. Same radius paramaters as all earthquakes
+  function getRadius(magnitude) {
+    if (magnitude === 0) {
+      return 1;
+    }
+    return magnitude * 4;
+  }
+  console.log(data);
+  L.geoJSON(data, {
+    // Turn each feature into a circleMarker
+    pointToLayer: function(feature, latlng) {
+      console.log(feature);
+      return L.circleMarker(latlng);
+    },
+    // Set style
+    style: styleInfo,
+    // Create popup to show magnitude and location of earthquake
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+    }
+  }).addTo(majorEQ);
+
+  // Add major earthquakes to map
+  majorEQ.addTo(map);
 });
