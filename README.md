@@ -38,6 +38,10 @@ overlays on/off:
 
 ![Earthquakes](Resources/earthquakes.png)
 
+Select a marker to display earthquake magnitude and location:
+
+![eq_info](Resources/eq_info.png)
+
 Use `CTRL+C` to shut down the HTTP server after closing the browser.
 
 One can follow this same process within any of the directories contained in
