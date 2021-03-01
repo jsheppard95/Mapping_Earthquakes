@@ -19,29 +19,29 @@ API calls to USGS GeoJSON sources.
     - Visual Studio Code 1.51.1
 
 ## Usage
-This repository contains multiple JavaScript/HTML packages each producing
-interactive maps. One can launch the earthquake and tectonic plate map as
+This repository contains multiple JavaScript/HTML packages, each producing
+an interactive map. One can launch the earthquake and tectonic plate map as
 follows:
 
 Navigate to `Earthquake_Challenge` directory:
 ```
 $ cd Earthquake_Challenge/
 ```
-Launch Python `http.server` module:
+Launch the Python `http.server` module:
 ```
 $ python -m http.server
 Serving HTTP on :: port 8000 (http://[::]:8000/) ...
 ```
-Launch web browser to the local host and port shown in the output above. Move
-cursor over tiles in top right corner to change the background map and toggle
+Launch web browser to the local host and port shown in the output above. Hover
+cursor over tile in top right corner to change the background map and toggle
 overlays on/off:
 
 ![Earthquakes](Resources/earthquakes.png)
 
-Use `CTRL+C` to close the `http` server after closing the browser.
+Use `CTRL+C` to shut down the HTTP server after closing the browser.
 
 One can follow this same process within any of the directories contained in
 the root of this repository to launch other maps from the resources listed
 above. Ensure the current working directory contains an `index.html` file and
-`static` directory of JavaScript crode prior to launching the `http.server`
+`static` directory of JavaScript code prior to starting the `http.server`
 module.
