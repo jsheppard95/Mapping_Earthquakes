@@ -8,7 +8,7 @@ API calls to USGS GeoJSON sources.
     - [USGS All Earthquakes (Past 7 Days)](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)
     - [Tectonic Plates](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json)
     - [USGS M4.5+ Earthquakes (Past 7 Days)](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson)
-    - [Toronto Airline Route](torontoRoutes.json)
+    - [Toronto Airline Routes](torontoRoutes.json)
     - [Major Airports](majorAirports.json)
     - [Toronto Neighborhoods](torontoNeighborhoods.json)
     - [City Populations](Mapping_Multiple_Points/static/js/cities.js)
